@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+    <title>Title of the document</title>
+
+
+    <link rel="stylesheet" href="/media/styles/bootstrap.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="../media/styles/bootstrap-theme.css" type="text/css" /> -->
+    <link rel="stylesheet" href="/media/styles/bootstrap-metro-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/media/styles/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="/media/styles/jquery.ui.theme.font-awesome.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="../media/styles/jquery.ui.theme.css" type="text/css" />  -->
+    <link rel="stylesheet" href="/media/styles/main-theme.css" type="text/css" />
+
+    {% block styles %}
+    {% endblock %}
+
+    <script type="text/javascript" src="/media/scripts/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="/media/scripts/jquery-ui.js"></script>
+    <script type="text/javascript" src="/media/scripts/bootstrap.js"></script>
+
+    {% block scripts %}
+    {% endblock %}
+
+</head>
+
+<body>
+    <nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="/media/images/logo.png"></a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <section class="container">
+        {% block content %}
+        {% endblock %}
+    </section>
+</body>
+</html>

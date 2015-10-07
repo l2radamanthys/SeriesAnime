@@ -1,0 +1,43 @@
+{% extends "base-template.html" %}
+
+
+{% block content %}
+    <div class="row">
+            <div class="col-md-4">
+                <img src="/{{ serie.image }}" class="img-responsive">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ serie.name }}</h1>
+                <div class="text-right">
+                    <a href="/series/agregar-servidor/{{ serie.id }}/" class="btn btn-primary">Agregar Servidor</a>
+                    <a href="" class="btn btn-primary">Modificar Datos</a>
+                </div>
+                <br>
+                <div>
+                    <p><strong>Descripcion:</strong> </p>
+                    <p>{{ serie.descripcion }}</p>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><strong>Estado:</strong> {{ serie.get_status_display }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Calificacion:</strong> {{ serie.get_rank_display }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Capitulos:</strong> {{ serie.chapters }}</p>
+                    </div>
+                </div>
+
+                <h5><strong>Servidores:</strong></h5>
+                {% for server in serie.servers %}
+                    <a href="{{ server.url }}" target="blank_" class="btn btn-success"><span class="fa fa-globe"></span> {{ server }} </a>
+                {% endfor %}
+            </div>
+            <div class="col-md-12">
+                <br><br> <br>
+            </div>
+        </div>
+    </div>
+{% endblock %}

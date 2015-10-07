@@ -1,0 +1,25 @@
+{% extends "base-template.html" %}
+{% load thumbnail %}
+
+{% block content %}
+
+<h1>Series de Anime</h1>
+
+<div class="text-right">
+    <a href="/series/agregar/" class="btn btn-primary">Agregar Serie</a>
+</div>
+<br>
+
+<div class="row">
+    {% for serie in series %}
+        <a href="/series/mostrar/{{ serie.id }}/">
+        <div class="col-md-3 img-thumbnail my-thumbnail">
+            <img src="/{% thumbnail serie.image 400x400 crop %}" class="img-responsive">
+            <h5><strong>{{ serie.name }}</strong></h5>
+        </div>
+        </a>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

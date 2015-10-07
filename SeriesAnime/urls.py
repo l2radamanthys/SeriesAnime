@@ -16,6 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from Main import views
+
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^$', views.home),
+    url(r'^series/agregar/$', views.add_serie),
+    url(r'^series/mostrar/(?P<id_>\d+)/$', views.show_serie),
+    url(r'^series/agregar-servidor/(?P<id_>\d+)/$', views.add_server_serie),
 ]

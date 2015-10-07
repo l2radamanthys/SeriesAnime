@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 from django.db import models
-from my_setings import *
+from SeriesAnime.my_setings import *
 
 
 
@@ -7,16 +11,23 @@ class Serie(models.Model):
     """
         Series
     """
-    name = models.CharField("Nombre", max_lenght=100)
+    name = models.CharField("Nombre", max_length=100)
+    descripcion = models.TextField("Descripcion")
+    rank = models.TextField("Calificacion", max_length="1", choices=RANK_CHOICES, default="2")
     image = models.ImageField("Portada", upload_to="media/uploads")
     chapters = models.IntegerField("Numero de Capitulos")
-    status = models.CharField("Estado", max_lenght=1, choices=STATUS_CHOICES)
+    status = models.CharField("Estado", max_length=1, choices=STATUS_CHOICES)
 
 
     class Meta:
         db_table = "Series"
         verbose_name = "Serie"
         verbose_name_plural = "Series"
+        ordering = ['-id']
+
+    def servers(self):
+
+        return Server.objects.filter(serie=self)
 
 
     def __unicode__(self):
@@ -28,9 +39,9 @@ class Server(models.Model):
     """
         Servidores
     """
-    name = models.CharField("Nombre", max_lenght=100)
-    url = models.CharField("url", max_lenght=150)
-    url_format = models.CharField("formato", max_lenght=150)
+    name = models.CharField("Nombre", max_length=100)
+    url = models.CharField("url", max_length=150, default="http://")
+    url_format = models.CharField("formato", max_length=150, default="http://")
     serie = models.ForeignKey(Serie)
 
 

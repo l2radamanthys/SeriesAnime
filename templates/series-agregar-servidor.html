@@ -1,0 +1,31 @@
+{% extends "base-template.html" %}
+
+
+{% block content %}
+    <h1>Agregar Servidor</h1>
+    <h4>Serie: {{ serie.name }}</h4>
+    <form role="form" action="" method="POST">
+        <div class="form-group {%if form.name.errors %}has-error{%endif%}">
+            <label> {{ form.name.label }}:</label>
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+
+        <div class="form-group {%if form.url.errors %}has-error{%endif%}">
+            <label> {{ form.url.label }}:</label>
+            {{ form.url }}
+            {{ form.url.errors }}
+        </div>
+
+        <div class="form-group {%if form.url_format.errors %}has-error{%endif%}">
+            <label> {{ form.url_format.label }}:</label>
+            {{ form.url_format }}
+            {{ form.url_format.errors }}
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Registrar">
+        </div>
+    </form>
+
+{% endblock %}
