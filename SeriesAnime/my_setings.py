@@ -13,3 +13,8 @@ RANK_CHOICES = (
     ('4', 'Muy Buena'),
     ('5', 'Excelente'),
 )
+
+SI_NO_CHOICES = (
+    (True, "Si"),
+    (False, "No")
+)

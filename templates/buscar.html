@@ -1,0 +1,64 @@
+{% extends "base-template.html" %}
+{% load thumbnail %}
+
+{% block styles %}
+<link href="/media/styles/datatables.css" rel="stylesheet">
+<link href="/media/styles/dataTables.bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+<script src="/media/scripts/jquery.dataTables.js"></script>
+<script src="/media/scripts/dataTables.bootstrap.min.js"></script>
+<script src="/media/scripts/custom-config.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table').DataTable({
+            "oLanguage": dtLangTranslate,
+            "oAria": dtLangTranslateoAria,
+            "columnDefs": [
+                {
+                    "orderable": false,
+                    "targets": 0
+                },
+            ]
+        });
+    });
+
+    function redireccionar(id_) {
+        window.location.assign("/series/mostrar/" + id_ + "/");
+    }
+
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Buscar Serie</h1>
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Calificacion</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for serie in series %}
+    <tr style="cursor: pointer" onclick="redireccionar('{{ serie.id }}');">
+        <td>
+            <img src="/{% thumbnail serie.image 90x90 crop %}">
+        </td>
+        <td>
+            {{ serie.code }} - {{ serie.name }}
+        </td>
+        <td>
+            {{ serie.get_rank_display }}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

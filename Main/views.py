@@ -17,7 +17,7 @@ from Main.myforms import *
 def home(request):
     template = get_template('home.html')
     data = {}
-    data['series'] = Serie.objects.filter()
+    data['series'] = Serie.objects.filter(status='A')
     view_cont = template.render(Context(data))
     return HttpResponse(view_cont)
 
@@ -50,6 +50,15 @@ def show_serie(request, id_):
 
 
 
+def search_serie(request):
+    template = get_template('buscar.html')
+    data = {}
+    data['series'] = Serie.objects.filter()
+    view_cont = template.render(Context(data))
+    return HttpResponse(view_cont)
+
+
+
 def add_server_serie(request, id_):
     template = get_template('series-agregar-servidor.html')
     serie_ = Serie.objects.get(id=id_)
@@ -74,3 +83,5 @@ def add_server_serie(request, id_):
 
     view_cont = template.render(Context(data))
     return HttpResponse(view_cont)
+
+

@@ -18,9 +18,15 @@ class SerieForm(forms.ModelForm):
             'name' : TextInput(attrs={'class': 'form-control'}),
             'chapters' : TextInput(attrs={'class': 'form-control'}),
             'descripcion' : Textarea(attrs={'class': 'form-control' , 'rows':'3'}),
+            'gender' : TextInput(attrs={'class': 'form-control'}),
             'status' : Select(attrs={'class': 'form-control'}),
             'rank' : Select(attrs={'class': 'form-control'}),
             'image': FileInput(attrs={'class': 'form-control'}),
+            'code' : TextInput(attrs={'class': 'form-control'}),
+            'in_disk' : Select(attrs={'class': 'form-control'}),
+            'complete' : Select(attrs={'class': 'form-control'}),
+            'ubication' : TextInput(attrs={'class': 'form-control'}),
+            'observations' : Textarea(attrs={'class': 'form-control' , 'rows':'3'}),
         }
 
 

@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^series/agregar/$', views.add_serie),
     url(r'^series/mostrar/(?P<id_>\d+)/$', views.show_serie),
     url(r'^series/agregar-servidor/(?P<id_>\d+)/$', views.add_server_serie),
+    url(r'^series/buscar/$', views.search_serie),
 ]

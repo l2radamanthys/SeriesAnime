@@ -12,11 +12,17 @@ class Serie(models.Model):
         Series
     """
     name = models.CharField("Nombre", max_length=100)
+    code = models.CharField("Codigo", max_length=50)
     descripcion = models.TextField("Descripcion")
     rank = models.TextField("Calificacion", max_length="1", choices=RANK_CHOICES, default="2")
     image = models.ImageField("Portada", upload_to="media/uploads")
     chapters = models.IntegerField("Numero de Capitulos")
     status = models.CharField("Estado", max_length=1, choices=STATUS_CHOICES)
+    gender = models.CharField("Genero", max_length="150")
+    in_disk = models.BooleanField("Almacena Localmente", choices=SI_NO_CHOICES, default=False)
+    complete = models.BooleanField("Completa", choices=SI_NO_CHOICES, default=False)
+    ubication = models.CharField("Ubicacion", max_length=255, default="/")
+    observations = models.TextField("Observaciones", default="")
 
 
     class Meta:
@@ -25,8 +31,8 @@ class Serie(models.Model):
         verbose_name_plural = "Series"
         ordering = ['-id']
 
-    def servers(self):
 
+    def servers(self):
         return Server.objects.filter(serie=self)
 
 

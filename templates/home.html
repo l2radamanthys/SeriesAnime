@@ -10,11 +10,15 @@
 </div>
 <br>
 
+<h3>Series en Emision</h3>
+
 <div class="row">
     {% for serie in series %}
         <a href="/series/mostrar/{{ serie.id }}/">
-        <div class="col-md-3 img-thumbnail my-thumbnail">
-            <img src="/{% thumbnail serie.image 400x400 crop %}" class="img-responsive">
+        <div class="col-md-3 my-thumbnail text-center">
+            <div class="img-thumbnail">
+                <img src="/{% thumbnail serie.image 400x400 crop %}" class="img-responsive">
+            </div>
             <h5><strong>{{ serie.name }}</strong></h5>
         </div>
         </a>
