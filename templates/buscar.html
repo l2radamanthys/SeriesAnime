@@ -19,7 +19,7 @@
             "columnDefs": [
                 {
                     "orderable": false,
-                    "targets": 0
+                    "targets": 1
                 },
             ]
         });
@@ -33,11 +33,13 @@
 {% endblock %}
 
 {% block content %}
+<br>
 <h1>Buscar Serie</h1>
 
 <table class="table" id="table">
     <thead>
         <tr>
+            <th>Codigo</th>
             <th></th>
             <th>Nombre</th>
             <th>Calificacion</th>
@@ -47,10 +49,13 @@
     {% for serie in series %}
     <tr style="cursor: pointer" onclick="redireccionar('{{ serie.id }}');">
         <td>
-            <img src="/{% thumbnail serie.image 90x90 crop %}">
+            {{ serie.code }}
         </td>
         <td>
-            {{ serie.code }} - {{ serie.name }}
+            <img src="/{% thumbnail serie.image 64x64 crop %}">
+        </td>
+        <td>
+            {{ serie.name }}
         </td>
         <td>
             {{ serie.get_rank_display }}

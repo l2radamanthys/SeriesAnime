@@ -21,9 +21,11 @@ table {
     background-color: #FFF;
 }
 
-h1, h2, h3, h4, h5, p, a {
-    font-family: "HelveticaNeueLight" !important;
+h1, h2, h3, h4, h5, p, a, label, li, select, input, textarea, option {
+    color: #333;
+    font-family: "LatoWeb", "HelveticaNeueLight" !important;
 }
+
 
 nav.navbar-custom {
     background-color: #FFF;
@@ -66,4 +68,25 @@ nav.navbar-custom a {
 
 .form-group input[type='text'], select, textarea {
     border: 1px solid #999 !important;
+}
+
+.errorlist {
+    list-style-type: None;
+}
+
+.errorlist li {
+    font-size: 9pt;
+    color:#D00;
+}
+
+.fsize10 {
+    color: #333;
+    font-size: 10pt;
+}
+
+.container {
+    width: auto !important;
+    max-width: 2000px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
