@@ -41,7 +41,7 @@ nav.navbar-custom a {
 
 .my-thumbnail {
     border: None;
-    height: 350px;
+    height: 370px;
 }
 
 .my-thumbnail h5 {
@@ -89,4 +89,8 @@ nav.navbar-custom a {
     max-width: 2000px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.gold {
+    color: #CC0;
 }

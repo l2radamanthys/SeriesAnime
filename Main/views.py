@@ -22,6 +22,14 @@ def home(request):
     return HttpResponse(view_cont)
 
 
+def all_serie(request):
+    template = get_template('series-todas.html')
+    data = {}
+    data['series'] = Serie.objects.filter()
+    view_cont = template.render(Context(data))
+    return HttpResponse(view_cont)
+
+
 def add_serie(request):
     template = get_template('series-agregar.html')
     data = {}

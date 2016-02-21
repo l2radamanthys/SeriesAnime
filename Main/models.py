@@ -3,7 +3,7 @@
 
 
 from django.db import models
-from SeriesAnime.my_setings import *
+from SeriesAnime.my_settings import *
 
 
 
@@ -15,7 +15,7 @@ class Serie(models.Model):
     code = models.CharField("Codigo", max_length=50)
     descripcion = models.TextField("Descripcion")
     rank = models.TextField("Calificacion", max_length="1", choices=RANK_CHOICES, default="2")
-    image = models.ImageField("Portada", upload_to="media/uploads")
+    image = models.ImageField("Portada", upload_to="media/uploads", default='media/uploads/default_image.png')
     chapters = models.IntegerField("Numero de Capitulos")
     status = models.CharField("Estado", max_length=1, choices=STATUS_CHOICES)
     gender = models.CharField("Genero", max_length=150)
@@ -29,8 +29,18 @@ class Serie(models.Model):
         db_table = "Series"
         verbose_name = "Serie"
         verbose_name_plural = "Series"
-        ordering = ['-id']
+        ordering = ['code', 'name', '-id']
 
+
+    def empty_image(self):
+        print(self.image);
+        return false;
+
+
+    def rank_to_stars(self):
+        t_star = '<i class="fa fa-star gold"></i>'
+        f_star = '<i class="fa fa-star gray"></i>'
+        return t_star * int(self.rank) + (f_star * (5 - int(self.rank)))
 
     def servers(self):
         return Server.objects.filter(serie=self)
@@ -39,6 +49,8 @@ class Serie(models.Model):
     def __unicode__(self):
         return self.name
 
+    def __string__(self):
+        return self.name
 
 
 class Server(models.Model):
@@ -55,6 +67,7 @@ class Server(models.Model):
         db_table = "Servidores"
         verbose_name = "Servidor"
         verbose_name_plural = "Servidores"
+        ordering = ['name']
 
 
     def get_chapter_url(self, number):
