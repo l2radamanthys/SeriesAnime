@@ -52,13 +52,18 @@
             {{ serie.code }}
         </td>
         <td>
+            
+        </td>
+        <!--
+        <td>
             <img src="/{% thumbnail serie.image 64x64 crop %}">
         </td>
+        -->
         <td>
             {{ serie.name }}
         </td>
         <td>
-            {{ serie.get_rank_display }}
+            {{ serie.rank_to_stars|safe }}
         </td>
     </tr>
     {% endfor %}

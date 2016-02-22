@@ -14,6 +14,7 @@ class Serie(models.Model):
     name = models.CharField("Nombre", max_length=100)
     code = models.CharField("Codigo", max_length=50)
     descripcion = models.TextField("Descripcion")
+    #year = models.CharField(u"Año", max_length=4)
     rank = models.TextField("Calificacion", max_length="1", choices=RANK_CHOICES, default="2")
     image = models.ImageField("Portada", upload_to="media/uploads", default='media/uploads/default_image.png')
     chapters = models.IntegerField("Numero de Capitulos")
@@ -47,10 +48,7 @@ class Serie(models.Model):
 
 
     def __unicode__(self):
-        return self.name
-
-    def __string__(self):
-        return self.name
+        return u"{} - {}".format(self.code, self.name)
 
 
 class Server(models.Model):

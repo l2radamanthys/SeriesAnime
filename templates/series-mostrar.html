@@ -19,7 +19,7 @@
                         <p><strong>Estado:</strong> {{ serie.get_status_display }}</p>
                     </div>
                     <div class="col-md-4">
-                        <p><strong>Calificacion:</strong> {{ serie.get_rank_display }}</p>
+                        <p><strong>Calificacion:</strong> {{ serie.rank_to_stars|safe }}</p>
                     </div>
                     <div class="col-md-4">
                         <p><strong>Capitulos:</strong> {{ serie.chapters }}</p>
