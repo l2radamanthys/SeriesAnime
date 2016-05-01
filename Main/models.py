@@ -51,6 +51,11 @@ class Serie(models.Model):
         return u"{} - {}".format(self.code, self.name)
 
 
+    def __str__(self):
+        return self.__unicode__()
+
+
+
 class Server(models.Model):
     """
         Servidores

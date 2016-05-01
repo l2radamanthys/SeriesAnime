@@ -3,15 +3,16 @@
 
 {% block content %}
 
-<br>
 <h1>Series de Anime</h1>
 
-<div class="text-right">
-    <a href="/series/agregar/" class="btn btn-primary">Agregar Serie</a>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Series actualmente en emisión</h3>
+    </div>
+    <div class="col-md-6 text-right">
+        <a href="/series/agregar/" class="btn btn-raised btn-primary">Agregar Serie</a>
+    </div>
 </div>
-<br>
-
-<h3>En Emisión</h3>
 
 <div class="row">
     {% for serie in series %}

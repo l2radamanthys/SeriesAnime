@@ -17,7 +17,7 @@ from Main.myforms import *
 def home(request):
     template = get_template('home.html')
     data = {}
-    data['series'] = Serie.objects.filter(status='A')
+    data['series'] = Serie.objects.filter(status='A').order_by('name')
     view_cont = template.render(Context(data))
     return HttpResponse(view_cont)
 
@@ -42,7 +42,15 @@ def add_serie(request):
             data['form'] = form
 
     else:
-        data['form'] = SerieForm()
+        default_data = {
+            'code': 0,
+            'gender': 'sin especificar',
+            'status': 'A',
+            'descripcion': 'sin descripción',
+            'chapters': '0',
+            'observations': 'sin observaciones',
+        }
+        data['form'] = SerieForm(initial=default_data)
 
     view_cont = template.render(Context(data))
     return HttpResponse(view_cont)

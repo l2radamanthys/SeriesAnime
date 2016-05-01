@@ -21,7 +21,7 @@ class SerieForm(forms.ModelForm):
             'gender' : TextInput(attrs={'class': 'form-control'}),
             'status' : Select(attrs={'class': 'form-control'}),
             'rank' : Select(attrs={'class': 'form-control'}),
-            'image': FileInput(attrs={'class': 'form-control'}),
+            'image': FileInput(attrs={'class': 'form-control', 'placeholder': 'seleccione una imagen'}),
             'code' : TextInput(attrs={'class': 'form-control'}),
             'in_disk' : Select(attrs={'class': 'form-control'}),
             'complete' : Select(attrs={'class': 'form-control'}),

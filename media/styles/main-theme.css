@@ -9,65 +9,22 @@
 }
 
 body {
-    background-color: #56ABAB;
-}
-
-section {
-    background-image: url("/media/images/bg.png");
-    margin-top: 64px;
+    /*background-color: #56ABAB;*/
 }
 
 table {
-    background-color: #FFF;
+   /* background-color: #FFF; */
 }
 
 h1, h2, h3, h4, h5, p, a, label, li, select, input, textarea, option {
-    color: #333;
+    /* color: #333; */
     font-family: "LatoWeb", "HelveticaNeueLight" !important;
 }
 
 
-nav.navbar-custom {
-    background-color: #FFF;
-    font-family: "HelveticaNeue";
-    box-shadow: 0px 2px 5px #555555;
-}
-
-nav.navbar-custom a {
-    text-transform: uppercase;
-    text-shadow: 0px !important;
-    font-weight: normal;
-}
-
-.my-thumbnail {
-    border: None;
-    height: 370px;
-}
-
-.my-thumbnail h5 {
-    font-size: 10pt;
-    text-align: center;
-
-}
-
-.server-list {
-    list-style-type: none;
-    margin-left: 0;
-    padding-left: 20px;
-}
-
-.server-list li a {
-    color: #333 !important;
-    font-weight: bold;
-}
-
-
-.form-group label {
-    color: #333;
-}
-
-.form-group input[type='text'], select, textarea {
-    border: 1px solid #999 !important;
+section {
+    background-color: #FFFFFF;
+    margin-top: 74px;
 }
 
 .errorlist {
@@ -84,11 +41,10 @@ nav.navbar-custom a {
     font-size: 10pt;
 }
 
-.container {
-    width: auto !important;
-    max-width: 2000px;
-    margin-left: 10px;
-    margin-right: 10px;
+.my-thumbnail {
+    height: 350px;
+    padding: 5px 5px;
+    overflow: hidden;
 }
 
 .gold {
