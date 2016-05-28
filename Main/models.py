@@ -43,9 +43,13 @@ class Serie(models.Model):
         f_star = '<i class="fa fa-star gray"></i>'
         return t_star * int(self.rank) + (f_star * (5 - int(self.rank)))
 
+
     def servers(self):
         return Server.objects.filter(serie=self)
 
+
+    def not_servers(self):
+        return len(Server.objects.filter(serie=self))
 
     def __unicode__(self):
         return u"{} - {}".format(self.code, self.name)

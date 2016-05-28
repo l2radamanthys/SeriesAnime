@@ -33,23 +33,34 @@
 
                 <br>
                 <div class="row">
-                    <div class="col-md-3">
-                         <h5><strong>Servidores:</strong></h5>
-                    </div>
-                    <div class="col-md-9 text-right">
+                    <div class="col-md-12 text-right">
                         <a href="/series/agregar-servidor/{{ serie.id }}/" class="btn btn-primary btn-raised">Agregar Servidor</a>
-                        <a href="#" class="btn btn-primary btn-raised">Modificar Datos</a>
+                        <a href="/series/modificar/{{ serie.id }}/" class="btn btn-primary btn-raised">Modificar Datos</a>
+                        <a href="/series/eliminar/{{ serie.id }}/" class="btn btn-primary btn-raised">Quitar</a>
+                    </div>
+
+                    <div class="col-md-12">
+                         <h5><strong>Servidores:</strong></h5>
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if not serie.not_servers %}
+                            <ul>
+                            {% for server in serie.servers %}
+                                <li><a href="{{ server.url }}" target="blank_" class="btn btn-success btn-raised"><span class="fa fa-globe"></span> {{ server }} </a></li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No hay servidores disponibles.</p>
+                        {% endif %}
+                    </div>
+                </div>
 
-
-                {% for server in serie.servers %}
-                    <a href="{{ server.url }}" target="blank_" class="btn btn-success btn-raised"><span class="fa fa-globe"></span> {{ server }} </a>
-                {% endfor %}
             </div>
             <div class="col-md-12">
-                <br><br> <br>
+                <br><br><br>
             </div>
         </div>
     </div>

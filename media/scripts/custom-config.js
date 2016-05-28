@@ -32,5 +32,5 @@ $(document).ready(function() {
         extraClasses: 'messenger-fixed messenger-on-top',
         theme: 'flat'
     };*/
-
+    $.material.init();
 });

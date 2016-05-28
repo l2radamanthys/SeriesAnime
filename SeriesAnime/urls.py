@@ -25,7 +25,10 @@ urlpatterns = [
     url(r'^$', views.home),
     url(r'^series/$', views.all_serie),
     url(r'^series/agregar/$', views.add_serie),
+    url(r'^series/agregar-simple/$', views.rapid_add_serie),
     url(r'^series/mostrar/(?P<id_>\d+)/$', views.show_serie),
+    url(r'^series/modificar/(?P<id_>\d+)/$', views.edit_serie),
+    url(r'^series/eliminar/(?P<id_>\d+)/$', views.delete_serie),
     url(r'^series/agregar-servidor/(?P<id_>\d+)/$', views.add_server_serie),
     url(r'^series/buscar/$', views.search_serie),
 ]

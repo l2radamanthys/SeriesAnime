@@ -37,7 +37,7 @@ def add_serie(request):
         form = SerieForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/series/')
         else:
             data['form'] = form
 
@@ -45,7 +45,7 @@ def add_serie(request):
         default_data = {
             'code': 0,
             'gender': 'sin especificar',
-            'status': 'A',
+            'status': 'F',
             'descripcion': 'sin descripción',
             'chapters': '0',
             'observations': 'sin observaciones',
@@ -54,6 +54,65 @@ def add_serie(request):
 
     view_cont = template.render(Context(data))
     return HttpResponse(view_cont)
+
+
+
+#this a clon of add serie only changed template
+def rapid_add_serie(request):
+    template = get_template('series-agregar-simple.html')
+    data = {}
+    if request.method == 'POST':
+        form = SerieForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/series/')
+        else:
+            data['form'] = form
+
+    else:
+        default_data = {
+            'code': 0,
+            'gender': 'sin especificar',
+            'status': 'F',
+            'descripcion': 'sin descripción',
+            'chapters': '0',
+            'observations': 'sin observaciones',
+        }
+        data['form'] = SerieForm(initial=default_data)
+
+    view_cont = template.render(Context(data))
+    return HttpResponse(view_cont)
+
+
+
+def edit_serie(request, id_):
+    template = get_template('series-agregar.html')
+    serie = Serie.objects.get(id=id_)
+    data = {}
+    if request.method == 'POST':
+        form = SerieForm(request.POST, request.FILES, instance=serie)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/series/')
+
+        else:
+            data['form'] = form
+
+    else:
+        data['form'] = SerieForm(instance=serie)
+
+    view_cont = template.render(Context(data))
+    return HttpResponse(view_cont)
+
+
+
+def delete_serie(request, id_):
+    try:
+        serie = Serie.objects.get(id=id_)
+        serie.delete()
+        return HttpResponseRedirect('/')
+    except:
+        return HttpResponseRedirect('/')
 
 
 
