@@ -87,3 +87,24 @@ class Server(models.Model):
 
     def __str__(self):
         return self.__unicode__()
+
+
+
+class RelacionSeries(models.Model):
+    serie_a = models.ForeignKey(Serie, related_name='serie_a')
+    serie_b = models.ForeignKey(Serie, related_name='serie_b')
+    relation = models.CharField(max_length=1, choices=RELACION_SERIES_CHOICES, default="N")
+
+    class Meta:
+        db_table = "SeriesRelacion"
+        verbose_name = "Series Relacion"
+        verbose_name_plural = "Series Relaciones"
+        ordering = ['id']
+
+
+    def __unicode__(self):
+        return "{} - {}".format(self.serie_a, self.serie_b)
+
+
+    def __str__(self):
+        return self.__unicode__()

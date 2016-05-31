@@ -8,4 +8,5 @@ class ModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Serie, ModelAdmin)
+admin.site.register(RelacionSeries, ModelAdmin)
 admin.site.register(Server, ModelAdmin)
