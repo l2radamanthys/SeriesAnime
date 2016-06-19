@@ -49,7 +49,10 @@ class Serie(models.Model):
 
 
     def not_servers(self):
-        return len(Server.objects.filter(serie=self))
+        if len(Server.objects.filter(serie=self)) > 0:
+            return False
+        else:
+            return True
 
     def __unicode__(self):
         return u"{} - {}".format(self.code, self.name)

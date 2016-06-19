@@ -45,15 +45,25 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div >
                         {% if not serie.not_servers %}
-                            <ul>
-                            {% for server in serie.servers %}
-                                <li><a href="{{ server.url }}" target="blank_" class="btn btn-success btn-raised"><span class="fa fa-globe"></span> {{ server }} </a></li>
-                            {% endfor %}
-                            </ul>
+                            <table class="col-xs-12">
+                                <thead></thead>
+                                <tbody>
+                                    {% for server in serie.servers %}
+                                    <tr class="row">
+                                        <td class="col-lg-8 col-md-6"> {{ server }} </td>
+                                        <td class="col-lg-4 col-md-6">
+                                            <a href="{{ server.url }}" target="blank_" class="btn btn-success btn-raised"> <i class="fa fa-globe"></i></a>
+                                            <a href="" class="btn btn-success btn-raised"><i class="fa fa-pencil"></i></a>
+                                            <a href="" class="btn btn-success btn-raised"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>    
+                            </table>
                         {% else %}
-                            <p>No hay servidores disponibles.</p>
+                            <p class="alert alert-warning">No hay servidores disponibles.</p>
                         {% endif %}
                     </div>
                 </div>
