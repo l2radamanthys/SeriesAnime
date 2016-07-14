@@ -62,21 +62,31 @@ def rapid_add_serie(request):
     template = get_template('series-agregar-simple.html')
     data = {}
     if request.method == 'POST':
+        default_data = {
+            'descripcion': 'sin descripción',
+            'observations': 'sin observaciones',
+            'ubication': '/',
+        }
+        request.POST.update(default_data)
+
         form = SerieForm(request.POST, request.FILES)
+
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/series/')
         else:
             data['form'] = form
+            print(form.errors)
 
     else:
         default_data = {
             'code': 0,
             'gender': 'sin especificar',
-            'status': 'F',
+            'status': 'A',
             'descripcion': 'sin descripción',
             'chapters': '0',
             'observations': 'sin observaciones',
+            'ubication': '/',
         }
         data['form'] = SerieForm(initial=default_data)
 
