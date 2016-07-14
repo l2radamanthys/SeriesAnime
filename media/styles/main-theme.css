@@ -50,3 +50,15 @@ section {
 .gold {
     color: #CC0;
 }
+
+.green-color {
+    background-color: #0A0;
+    height: 2px;
+    margin: 0 10px;
+}
+
+.red-color {
+    background-color: #F00;
+    height: 2px;
+    margin: 0 10px;
+}

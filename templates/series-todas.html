@@ -16,7 +16,13 @@
         <div class="col-md-3 col-lg-2 my-thumbnail text-center">
             <div class="img-thumbnail">
                 <img src="/{% thumbnail serie.image 166x250 crop %}" class="img-responsive">
-            </div> <br>
+            </div> 
+            {% if serie.complete %}   
+                <div class="green-color"></div>
+            {% else %}
+                <div class="red-color"></div>
+            {% endif %}
+
             <label>{{ serie.rank_to_stars|safe }}</label>
             <br>
             <label class="fsize10">{{ serie.code }} - {{ serie.name }}</label> <br>
