@@ -18,7 +18,7 @@ def home(request):
     template = get_template('home.html')
     data = {}
     data['series'] = Serie.objects.filter(status='A').order_by('name')
-    view_cont = template.render(Context(data))
+    view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
@@ -26,7 +26,7 @@ def all_serie(request):
     template = get_template('series-todas.html')
     data = {}
     data['series'] = Serie.objects.filter()
-    view_cont = template.render(Context(data))
+    view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
@@ -52,7 +52,7 @@ def add_serie(request):
         }
         data['form'] = SerieForm(initial=default_data)
 
-    view_cont = template.render(Context(data))
+    view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
@@ -80,7 +80,7 @@ def rapid_add_serie(request):
         }
         data['form'] = SerieForm(initial=default_data)
 
-    view_cont = template.render(Context(data))
+    view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
@@ -101,7 +101,7 @@ def edit_serie(request, id_):
     else:
         data['form'] = SerieForm(instance=serie)
 
-    view_cont = template.render(Context(data))
+    view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
@@ -120,7 +120,7 @@ def show_serie(request, id_):
     template = get_template('series-mostrar.html')
     data = {}
     data['serie'] = Serie.objects.get(id=id_)
-    view_cont = template.render(Context(data))
+    view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
@@ -129,7 +129,7 @@ def search_serie(request):
     template = get_template('buscar.html')
     data = {}
     data['series'] = Serie.objects.filter()
-    view_cont = template.render(Context(data))
+    view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
@@ -156,7 +156,7 @@ def add_server_serie(request, id_):
     else:
         data['form'] = ServerForm()
 
-    view_cont = template.render(Context(data))
+    view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
