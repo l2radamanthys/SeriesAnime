@@ -14,6 +14,7 @@ from Main.models import *
 from Main.myforms import *
 
 
+
 def home(request):
     template = get_template('home.html')
     data = {}
@@ -22,12 +23,14 @@ def home(request):
     return HttpResponse(view_cont)
 
 
+
 def all_serie(request):
     template = get_template('series-todas.html')
     data = {}
     data['series'] = Serie.objects.filter()
     view_cont = template.render(data)
     return HttpResponse(view_cont)
+
 
 
 def add_serie(request):
@@ -73,7 +76,7 @@ def rapid_add_serie(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/series/')
+            return HttpResponseRedirect('/')
         else:
             data['form'] = form
             print(form.errors)
