@@ -33,12 +33,35 @@ def all_serie(request):
 
 
 
+def full_serie(request):
+    """
+        Todas las series completas
+    """
+    template = get_template('series-todas.html')
+    data = {}
+    data['series'] = Serie.objects.filter(complete=True)
+    view_cont = template.render(data)
+    return HttpResponse(view_cont)
+
+
+def empty_serie(request):
+    """
+        Todas las series incompletas
+    """
+    template = get_template('series-todas.html')
+    data = {}
+    data['series'] = Serie.objects.filter(complete=False)
+    view_cont = template.render(data)
+    return HttpResponse(view_cont)
+
+
 def add_serie(request):
     template = get_template('series-agregar.html')
     data = {}
     if request.method == 'POST':
         form = SerieForm(request.POST, request.FILES)
         if form.is_valid():
+            print(form)
             form.save()
             return HttpResponseRedirect('/series/')
         else:
@@ -106,7 +129,7 @@ def edit_serie(request, id_):
         form = SerieForm(request.POST, request.FILES, instance=serie)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/series/')
+            return HttpResponseRedirect('/')
 
         else:
             data['form'] = form

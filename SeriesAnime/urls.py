@@ -24,6 +24,8 @@ urlpatterns = [
 
     url(r'^$', views.home),
     url(r'^series/$', views.all_serie),
+    url(r'^series/completas/$', views.full_serie),
+    url(r'^series/incompletas/$', views.empty_serie),
     url(r'^series/agregar/$', views.add_serie),
     url(r'^series/agregar-simple/$', views.rapid_add_serie),
     url(r'^series/mostrar/(?P<id_>\d+)/$', views.show_serie),
