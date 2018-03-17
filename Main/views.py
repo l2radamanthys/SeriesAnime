@@ -55,6 +55,18 @@ def empty_serie(request):
     return HttpResponse(view_cont)
 
 
+
+def last_serie_added(request):
+    """
+        Ultimas series agregadas
+    """
+    template = get_template('series-todas.html')
+    data = {}
+    data['series'] = Serie.objects.filter().order_by('-id')
+    view_cont = template.render(data)
+    return HttpResponse(view_cont)
+
+
 def add_serie(request):
     template = get_template('series-agregar.html')
     data = {}
@@ -129,11 +141,9 @@ def edit_serie(request, id_):
         form = SerieForm(request.POST, request.FILES, instance=serie)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
-
+            return HttpResponseRedirect('/series/mostrar/' + str(id_))
         else:
             data['form'] = form
-
     else:
         data['form'] = SerieForm(instance=serie)
 
@@ -143,13 +153,9 @@ def edit_serie(request, id_):
 
 
 def delete_serie(request, id_):
-    try:
-        serie = Serie.objects.get(id=id_)
-        serie.delete()
-        return HttpResponseRedirect('/')
-    except:
-        return HttpResponseRedirect('/')
-
+    serie = Serie.objects.get(id=id_)
+    serie.delete()
+    return HttpResponseRedirect('/')
 
 
 def show_serie(request, id_):
@@ -185,7 +191,7 @@ def add_server_serie(request, id_):
                 url_format = form.cleaned_data['url_format'],
             )
             server.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/series/mostrar/' + str(id_))
         else:
             data['form'] = form
 
@@ -196,3 +202,9 @@ def add_server_serie(request, id_):
     return HttpResponse(view_cont)
 
 
+
+def delete_server_serie(request, id_):
+    server = Server.objects.get(id=id_)
+    id_serie = server.serie.id
+    server.delete()
+    return HttpResponseRedirect('/series/mostrar/' + str(id_serie))

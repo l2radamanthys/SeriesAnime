@@ -42,7 +42,7 @@ section {
 }
 
 .my-thumbnail {
-    height: 350px;
+    height: 350px !important;
     padding: 5px 5px;
     overflow: hidden;
 }
@@ -61,4 +61,15 @@ section {
     background-color: #F00;
     height: 2px;
     margin: 0 10px;
+}
+
+.row-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.flex-item {
+    display: block;
+    width: 200px;
 }

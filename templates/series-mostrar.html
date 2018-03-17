@@ -4,7 +4,7 @@
 {% block content %}
     <div class="row">
             <div class="col-md-4">
-                <img src="/{{ serie.image }}" class="img-responsive" style="margin: 10pt auto;">
+                <img src="/{{ serie.image }}" class="img-responsive" style="margin: 10pt auto; max-height: 400px;">
             </div>
             <div class="col-md-8">
                 <br>
@@ -33,7 +33,7 @@
 
                 <br>
                 <div class="row">
-                    <div class="col-md-12 text-right">
+                    <div class="col-md-12">
                         <a href="/series/agregar-servidor/{{ serie.id }}/" class="btn btn-primary btn-raised">Agregar Servidor</a>
                         <a href="/series/modificar/{{ serie.id }}/" class="btn btn-primary btn-raised">Modificar Datos</a>
                         <a href="/series/eliminar/{{ serie.id }}/" class="btn btn-primary btn-raised">Quitar</a>
@@ -45,26 +45,20 @@
                 </div>
 
                 <div class="row">
-                    <div >
-                        {% if not serie.not_servers %}
-                            <table class="col-xs-12">
-                                <thead></thead>
-                                <tbody>
-                                    {% for server in serie.servers %}
-                                    <tr class="row">
-                                        <td class="col-lg-8 col-md-6"> {{ server }} </td>
-                                        <td class="col-lg-4 col-md-6">
-                                            <a href="{{ server.url }}" target="blank_" class="btn btn-success btn-raised"> <i class="fa fa-globe"></i></a>
-                                            <a href="" class="btn btn-success btn-raised"><i class="fa fa-pencil"></i></a>
-                                            <a href="" class="btn btn-success btn-raised"><i class="fa fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>    
-                            </table>
-                        {% else %}
+                    {% if not serie.not_servers %}
+                        {% for server in serie.servers %}
+                            <div class="col-lg-8 col-md-6"> {{ server }} </div>
+                            <div class="col-lg-4 col-md-6">
+                                <a href="{{ server.url }}" target="blank_" class="btn btn-success btn-raised"> <i class="fa fa-globe"></i></a>
+                                <a href="" class="btn btn-success btn-raised"><i class="fa fa-pencil"></i></a>
+                                <a href="/series/eliminar-servidor/{{ server.id }}" class="btn btn-success btn-raised"><i class="fa fa-trash"></i></a>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-12">
                             <p class="alert alert-warning">No hay servidores disponibles.</p>
-                        {% endif %}
+                        </div>
+                    {% endif %}
                     </div>
                 </div>
 

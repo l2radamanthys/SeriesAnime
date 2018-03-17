@@ -10,10 +10,10 @@
     <a href="/series/agregar-simple/" class="btn btn-raised btn-primary">Agregar Serie Simple</a>
 </div>
 
-<div class="row">
+<div class="row-container">
     {% for serie in series %}
-        <a href="/series/mostrar/{{ serie.id }}/">
-        <div class="col-md-3 col-lg-2 my-thumbnail text-center">
+        <a class="flex-item" href="/series/mostrar/{{ serie.id }}/">
+        <div class="my-thumbnail text-center">
             <div class="img-thumbnail">
                 <img src="/{% thumbnail serie.image 166x250 crop %}" class="img-responsive">
             </div> 
