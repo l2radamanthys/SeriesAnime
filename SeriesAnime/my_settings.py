@@ -19,6 +19,12 @@ SI_NO_CHOICES = (
     (False, "No")
 )
 
+TYPE = (
+    ('S', 'Serie'),
+    ('O', 'Ovas'),
+    ('P', 'Pelicula'),
+    ('O', 'Otros')
+)
 
 RELACION_SERIES_CHOICES = (
     ('N', 'No Especificada'),
@@ -41,3 +47,6 @@ INVERSE_RELATION_SERIE = {
     'A': 'Principal',
     'X': 'No Especificada',
 }
+
+# Cantidad de series por pagina
+SIZE_PER_PAGE = 24

@@ -9,10 +9,11 @@ from django.template import RequestContext, Context
 from django.template.loader import get_template
 from django.contrib.auth.models import User
 from django.contrib import auth
+#from django.core.paginator import Paginator
 
 from Main.models import *
 from Main.myforms import *
-
+from Main.paginator import MyPaginator
 
 
 def home(request):
@@ -24,45 +25,62 @@ def home(request):
 
 
 
-def all_serie(request):
+def all_serie(request, page_=1):
     template = get_template('series-todas.html')
+    page = int(page_)
+    series = Serie.objects.filter()
+    paginator = MyPaginator(series, SIZE_PER_PAGE, page, '/series/')
     data = {}
-    data['series'] = Serie.objects.filter()
+    data['series'] = series[paginator.offset:paginator.top]
+    data['paginator'] = paginator
     view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
 
-def full_serie(request):
+def full_serie(request, page_=1):
     """
         Todas las series completas
     """
     template = get_template('series-todas.html')
+    page = int(page_)
+    series = Serie.objects.filter(complete=True)
+    paginator = MyPaginator(series, SIZE_PER_PAGE, page, '/series/completas/')
     data = {}
-    data['series'] = Serie.objects.filter(complete=True)
+    data['series'] = series[paginator.offset:paginator.top]
+    data['paginator'] = paginator
     view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
-def empty_serie(request):
+
+def empty_serie(request, page_=1):
     """
         Todas las series incompletas
     """
     template = get_template('series-todas.html')
+    page = int(page_)
+    series = Serie.objects.filter(complete=False)
+    paginator = MyPaginator(series, SIZE_PER_PAGE, page, '/series/incompletas/')
     data = {}
-    data['series'] = Serie.objects.filter(complete=False)
+    data['series'] = series[paginator.offset:paginator.top]
+    data['paginator'] = paginator
     view_cont = template.render(data)
     return HttpResponse(view_cont)
 
 
 
-def last_serie_added(request):
+def last_serie_added(request, page_=1):
     """
         Ultimas series agregadas
     """
     template = get_template('series-todas.html')
+    page = int(page_)
+    series = Serie.objects.filter().order_by('-id')
+    paginator = MyPaginator(series, SIZE_PER_PAGE, page, '/series/ultimas/')
     data = {}
-    data['series'] = Serie.objects.filter().order_by('-id')
+    data['series'] = series[paginator.offset:paginator.top]
+    data['paginator'] = paginator
     view_cont = template.render(data)
     return HttpResponse(view_cont)
 

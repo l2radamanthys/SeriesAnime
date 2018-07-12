@@ -24,9 +24,13 @@ urlpatterns = [
 
     url(r'^$', views.home),
     url(r'^series/$', views.all_serie),
+    url(r'^series/(?P<page_>\d+)/$', views.all_serie),
     url(r'^series/completas/$', views.full_serie),
+    url(r'^series/completas/(?P<page_>\d+)/$', views.full_serie),
     url(r'^series/incompletas/$', views.empty_serie),
+    url(r'^series/incompletas/(?P<page_>\d+)/$', views.empty_serie),
     url(r'^series/ultimas/$', views.last_serie_added),
+    url(r'^series/ultimas/(?P<page_>\d+)/$', views.last_serie_added),
     url(r'^series/agregar/$', views.add_serie),
     url(r'^series/agregar-simple/$', views.rapid_add_serie),
     url(r'^series/mostrar/(?P<id_>\d+)/$', views.show_serie),

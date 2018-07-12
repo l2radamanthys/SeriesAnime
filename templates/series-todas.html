@@ -30,7 +30,30 @@
         </div>
         </a>
     {% endfor %}
-
 </div>
+
+
+<nav>
+    <ul class="pagination justify-content-center">
+        {% if paginator.has_prev %}
+        <li class="page-item">
+            <a class="page-link" href="{{ paginator.path }}{{ paginator.prev }}"> Anterior </a>
+        </li>
+        {% endif %}
+
+        {% for page in paginator.pages %}
+            <li class="page-item">
+                <a class="page-link" href="{{ paginator.path }}{{ page }}">{{ page }}</a> 
+            </li>
+        {% endfor %}
+        
+        {% if paginator.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="{{ paginator.path }}{{ paginator.next }}"> Siguiente </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+
 
 {% endblock %}
